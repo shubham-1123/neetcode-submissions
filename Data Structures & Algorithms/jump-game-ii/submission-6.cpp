@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        if(nums.size()==1)return 0;
+
+        int counter=0;
+        int jmp = 0, temp = 0;
+
+        for(int i=0;i<nums.size()-1;i++){
+            jmp = max(jmp, i+nums[i]);
+            if(i == temp){
+                temp = jmp;
+                counter ++;
+            }
+            if(jmp > nums.size()-1) return counter;
+        }
+        return counter;
+    }
+};
